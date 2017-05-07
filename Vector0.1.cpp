@@ -20,7 +20,7 @@ class Vector
     ~Vector();
      
     dtype & operator [](const size_t index);
-    Vector & operator = (const Vector & that);   
+    const Vector & operator = (const Vector & that);   
 
     bool verify() const;
  
@@ -29,7 +29,7 @@ class Vector
     size_t size() const;
     void print() const;    
 
-    void push_back(dtype val);
+    void push_back(const dtype val);
   private:
     size_t Capacity_;
     size_t Size_;
@@ -86,7 +86,7 @@ Vector::Vector(const Vector & that):
   VERIFY;
   }
 
-Vector & Vector::operator = (const Vector & that)
+const Vector & Vector::operator = (const Vector & that)
   {
   VERIFY;
   if(this == &that)
@@ -110,7 +110,7 @@ dtype & Vector::operator [](const size_t index)
   return Data_[index];
   }
 
-void Vector::push_back(dtype val)
+void Vector::push_back(const dtype val)
   {
   VERIFY;
   if(Size_ == Capacity_)
